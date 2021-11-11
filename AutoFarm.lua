@@ -1,4 +1,4 @@
--- UI Made by : https://v3rmillion.net/member.php?action=profile&uid=244024
+--Made by : https://v3rmillion.net/member.php?action=profile&uid=244024
 -- init
 -- Cr. Balance Tween : @𝕩𝔻𝕖𝕡𝕣𝕖𝕤𝕤𝕚𝕠𝕟𝕩#6481
 -- Cr. Quest and Position Quest : Chiwawa#9765
@@ -119,14 +119,14 @@ function CQ()
             S = "StartQuest"
             posQuest = Vector3.new(-1576.11743, 7.38933945, -2983.30762, 0.576966345, 1.22114863e-09, 0.816767931, -3.58496594e-10, 1, -1.24185606e-09, -0.816767931, 4.2370063e-10, 0.576966345)
             lctQuest =  CFrame.new(-1576.11743, 7.38933945, -2983.30762, 0.576966345, 1.22114863e-09, 0.816767931, -3.58496594e-10, 1, -1.24185606e-09, -0.816767931, 4.2370063e-10, 0.576966345)
-        elseif lv == 275 or lv <= 299 then
+        elseif lv == 275 or lv <= 300 then
             Mob = "Gladiator [Lv. 275]"
             Quest = "ColosseumQuest"
             LvQuest = 2
             S = "StartQuest"
             posQuest = Vector3.new(-1576.11743, 7.38933945, -2983.30762, 0.576966345, 1.22114863e-09, 0.816767931, -3.58496594e-10, 1, -1.24185606e-09, -0.816767931, 4.2370063e-10, 0.576966345)
             lctQuest = CFrame.new(-1576.11743, 7.38933945, -2983.30762, 0.576966345, 1.22114863e-09, 0.816767931, -3.58496594e-10, 1, -1.24185606e-09, -0.816767931, 4.2370063e-10, 0.576966345)
-        elseif lv == 300 or lv <= 329 then
+        elseif lv == 301 or lv <= 329 then
             Mob = "Military Soldier [Lv. 300]"
             Quest = "MagmaQuest"
             LvQuest = 1
@@ -184,9 +184,20 @@ function CQ()
             lctQuest = CFrame.new(5254.60156, 38.5011406, 4049.69678, -0.0504891425, -3.62066501e-08, -0.998724639, -9.87921389e-09, 1, -3.57534553e-08, 0.998724639, 8.06145284e-09, -0.0504891425)
         end
     end
+    if world3 then
+        if lv >= 2050 then
+            Mob = "Posessed Mummy [Lv. 2050]"
+            Quest = "HauntedQuest2"
+            LvQuest = 2
+            S = "StartQuest"
+            posQuest = Vector3.new(-9513.25098, 172.104858, 6078.604, 0.0295975041, -6.56451817e-08, 0.999561906, -6.94695572e-08, 1, 6.77309799e-08, -0.999561906, -7.14437931e-08, 0.0295975041)
+            lctQuest = CFrame.new(-9513.25098, 172.104858, 6078.604, 0.0295975041, -6.56451817e-08, 0.999561906, -6.94695572e-08, 1, 6.77309799e-08, -0.999561906, -7.14437931e-08, 0.0295975041)
+        end
+    end
 end
 
 function TP(P1,P2)
+game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
     local Distance = (P1 - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
     if Distance < 250 then
         Speed = 25000
@@ -204,7 +215,6 @@ CQ()
 local M = game.Workspace.Enemies:GetChildren()
 game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
     if game.Players.LocalPlayer.PlayerGui.Main.Quest.Visible == true then
-        pcall(function()
                 for a, e in pairs(M) do
                     for i, v in pairs(M) do
                         if e.Name == Mob then
@@ -224,7 +234,6 @@ game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
                         end
                     end
                 end
-        end)       
     end
 end
 
@@ -233,14 +242,12 @@ CQ()
 local M2 = game.ReplicatedStorage:GetChildren()
 game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
     if game.Players.LocalPlayer.PlayerGui.Main.Quest.Visible == true then
-        pcall(function()
             for ii, vv in pairs(M2) do
                 if vv.Name == Mob then
                     vv.Humanoid.WalkSpeed = 1
                     TP(vv.HumanoidRootPart.Position,vv.HumanoidRootPart.CFrame)
                 end
             end
-        end)        
     end
 end
 
