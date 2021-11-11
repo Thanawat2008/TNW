@@ -204,6 +204,7 @@ CQ()
 local M = game.Workspace.Enemies:GetChildren()
 game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
     if game.Players.LocalPlayer.PlayerGui.Main.Quest.Visible == true then
+        pcall(function()
                 for a, e in pairs(M) do
                     for i, v in pairs(M) do
                         if e.Name == Mob then
@@ -223,6 +224,7 @@ game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
                         end
                     end
                 end
+        end)       
     end
 end
 
@@ -231,12 +233,14 @@ CQ()
 local M2 = game.ReplicatedStorage:GetChildren()
 game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
     if game.Players.LocalPlayer.PlayerGui.Main.Quest.Visible == true then
+        pcall(function()
             for ii, vv in pairs(M2) do
                 if vv.Name == Mob then
                     vv.Humanoid.WalkSpeed = 1
                     TP(vv.HumanoidRootPart.Position,vv.HumanoidRootPart.CFrame)
                 end
             end
+        end)        
     end
 end
 
