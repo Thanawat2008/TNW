@@ -18,8 +18,10 @@ function AC()
     local vu = game:GetService'VirtualUser'
     local q = game.Players.LocalPlayer.PlayerGui.Main.Quest
     if q.Visible == true then
-            vu:CaptureController()
-            vu:Button1Down(Vector2.new(1280, 672))
+        if _G.AutoFarm then
+            vu:Button1Down(Vector2.new(0.9,0.9))
+            vu:Button1Up(Vector2.new(0.9,0.9))
+        end
     end
 end
 
@@ -245,12 +247,12 @@ local que = game.Players.LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.T
                                     v.Humanoid.WalkSpeed = 1
                                     e.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
                                     sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
-                                    e.HumanoidRootPart.Size = Vector3.new(50,50,50)
+                                    e.HumanoidRootPart.Size = Vector3.new(100,100,100)
                                     e.HumanoidRootPart.CanCollide = false
                                     if Mode == 1 then
-                                        TP(v.HumanoidRootPart.Position, v.HumanoidRootPart.CFrame * CFrame.new(0,25,10))
+                                        TP(v.HumanoidRootPart.Position, v.HumanoidRootPart.CFrame * CFrame.new(0,15,0))
                                     elseif Mode == 2 then
-                                        TP(v.HumanoidRootPart.Position, v.HumanoidRootPart.CFrame * CFrame.new(0,0,25))
+                                        TP(v.HumanoidRootPart.Position, v.HumanoidRootPart.CFrame * CFrame.new(0,0,20))
                                     end
                                 end
                             end
@@ -373,6 +375,33 @@ spawn(function()
         cam:Stop()
 end)
 
+local RigC = require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework)
+                ---------------------------------
+                spawn(function()
+                    game:GetService('RunService').Heartbeat:Connect(function()
+                        if _G.FastAttk then
+                            pcall(function()
+
+                                        RigC.activeController.timeToNextAttack = 0
+
+                            end)
+                        end
+                    end)
+                end)
+                spawn(function()
+                    game:GetService('RunService').Heartbeat:Connect(function()
+                        if _G.AutoFarm then
+                            local vu = game:GetService'VirtualUser'
+                            local q = game.Players.LocalPlayer.PlayerGui.Main.Quest
+                                if q.Visible == true then
+                                    if _G.AutoFarm then
+                                        vu:CaptureController()
+                                        vu:Button1Down(Vector2.new(1280, 672))
+                                    end
+                                end
+                        end
+                    end)
+                end)
 weapon = {}
 
 for _, we in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
@@ -380,7 +409,7 @@ for _, we in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
 end
 
 local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/zxciaz/VenyxUI/main/Reuploaded"))() --someone reuploaded it so I put it in place of the original back up so guy can get free credit.
-local venyx = library.new("TNW HUB | Rewrite Version 0.0.7.2", 5013109572)
+local venyx = library.new("TNW HUB | Rewrite Version 0.0.9.2", 5013109572)
 
 local themes = {
 Background = Color3.fromRGB(24, 24, 24),
@@ -415,6 +444,9 @@ section1:addToggle("Auto Superhuman", nil, function(sup)
                 Sup()
             end)
         end
+end)
+section2:addToggle("Fast Attack", nil, function(fat)
+    _G.FastAttk = fat
 end)
 section2:addDropdown("Select Weapon", weapon, function(wp)
    _G.Select_Weapon = wp
