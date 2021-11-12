@@ -1,5 +1,4 @@
---Made by : https://v3rmillion.net/member.php?action=profile&uid=244024
--- init
+-- UI Made by : https://v3rmillion.net/member.php?action=profile&uid=244024
 -- Cr. Balance Tween : @𝕩𝔻𝕖𝕡𝕣𝕖𝕤𝕤𝕚𝕠𝕟𝕩#6481
 -- Cr. Quest and Position Quest : Chiwawa#9765
 
@@ -30,20 +29,23 @@ function CQ()
     if world1 then
         if lv == 1 or lv <= 9 then
             Mob = "Bandit [Lv. 5]"
+            NMob = "Reward:\n$350\n250 Exp."
             Quest = "BanditQuest1"
             LvQuest = 1
             S = "StartQuest"
             lctQuest = CFrame.new(1061.66699, 16.5166187, 1544.52905, -0.942978859, -3.33851502e-09, 0.332852632, 7.04340497e-09, 1, 2.99841325e-08, -0.332852632, 3.06188177e-08, -0.942978859)
             posQuest = Vector3.new(1061.66699, 16.5166187, 1544.52905, -0.942978859, -3.33851502e-09, 0.332852632, 7.04340497e-09, 1, 2.99841325e-08, -0.332852632, 3.06188177e-08, -0.942978859)
-        elseif lv == 10 or lv <= 19 then
+        elseif lv == 10 or lv <= 14 then
             Mob = "Monkey [Lv. 14]"
+            NMob = "Reward:\n$800\n1,800 Exp."
             Quest = "JungleQuest"
             LvQuest = 1
             S = "StartQuest"
             lctQuest = CFrame.new(-1604.12012, 36.8521118, 154.23732, 0.0648873374, -4.70858913e-06, -0.997892559, 1.41431883e-07, 1, -4.70933674e-06, 0.997892559, 1.64442184e-07, 0.0648873374)
             posQuest = Vector3.new(-1604.12012, 36.8521118, 154.23732, 0.0648873374, -4.70858913e-06, -0.997892559, 1.41431883e-07, 1, -4.70933674e-06, 0.997892559, 1.64442184e-07, 0.0648873374)
-        elseif lv == 20 or lv <= 29 then
+        elseif lv == 15 or lv <= 29 then
             Mob = "Gorilla [Lv. 20]"
+            NMob = "Reward:\n$1,200\n3,500 Exp."
             Quest = "JungleQuest"
             LvQuest = 2
             S = "StartQuest"
@@ -51,6 +53,7 @@ function CQ()
             lctQuest = CFrame.new(-1604.12012, 36.8521118, 154.23732, 0.0648873374, -4.70858913e-06, -0.997892559, 1.41431883e-07, 1, -4.70933674e-06, 0.997892559, 1.64442184e-07, 0.0648873374)
         elseif lv == 30 or lv <= 39 then
             Mob = "Pirate [Lv. 35]"
+            NMob = "Reward:\n$3,000\n10,000 Exp."
             Quest = "BuggyQuest1"
             LvQuest = 1
             S = "StartQuest"
@@ -58,6 +61,7 @@ function CQ()
             lctQuest = CFrame.new(-1139.59717, 4.75205183, 3825.16211, -0.959730506, -7.5857054e-09, 0.280922383, -4.06310328e-08, 1, -1.11807175e-07, -0.280922383, -1.18718916e-07, -0.959730506)
         elseif lv == 40 or lv <= 59 then
             Mob = "Brute [Lv. 45]"
+            NMob = "Reward:\n$3,500\n18,000 Exp."
             Quest = "BuggyQuest1"
             LvQuest = 2
             S = "StartQuest"
@@ -65,6 +69,7 @@ function CQ()
             lctQuest = CFrame.new(-1139.59717, 4.75205183, 3825.16211, -0.959730506, -7.5857054e-09, 0.280922383, -4.06310328e-08, 1, -1.11807175e-07, -0.280922383, -1.18718916e-07, -0.959730506)
         elseif lv == 60 or lv <= 74 then
             Mob = "Desert Bandit [Lv. 60]"
+            NMob = "Reward:\n$4,000\n35,000 Exp."
             Quest = "DesertQuest"
             LvQuest = 1
             S = "StartQuest"
@@ -72,6 +77,7 @@ function CQ()
             lctQuest = CFrame.new(897.031128, 6.43846416, 4388.97168, -0.804044724, 3.68233266e-08, 0.594568789, 6.97835176e-08, 1, 3.24365246e-08, -0.594568789, 6.75715199e-08, -0.804044724)
         elseif lv == 75 or lv <= 89 then
             Mob = "Desert Officer [Lv. 70]"
+            NMob = "Reward:\n$4,500\n50,000 Exp."
             Quest = "DesertQuest"
             LvQuest = 2
             S = "StartQuest"
@@ -79,6 +85,7 @@ function CQ()
             lctQuest = CFrame.new(897.031128, 6.43846416, 4388.97168, -0.804044724, 3.68233266e-08, 0.594568789, 6.97835176e-08, 1, 3.24365246e-08, -0.594568789, 6.75715199e-08, -0.804044724)
         elseif lv == 90 or lv <= 99 then
             Mob = "Snow Bandit [Lv. 90]"
+            NMob = "Reward:\n$5,000\n70,000 Exp."
             Quest = "SnowQuest"
             LvQuest = 1
             S = "StartQuest"
@@ -86,6 +93,7 @@ function CQ()
             lctQuest = CFrame.new(1384.14001, 87.272789, -1297.06482, 0.348555952, -2.53947841e-09, -0.937287986, 1.49860568e-08, 1, 2.86358204e-09, 0.937287986, -1.50443711e-08, 0.348555952)
         elseif lv == 100 or lv <= 119 then
             Mob = "Snowman [Lv. 100]"
+            NMob = "Reward:\n$5,500\n120,000 Exp."
             Quest = "SnowQuest"
             LvQuest = 2
             S = "StartQuest"
@@ -93,6 +101,7 @@ function CQ()
             lctQuest = CFrame.new(1384.14001, 87.272789, -1297.06482, 0.348555952, -2.53947841e-09, -0.937287986, 1.49860568e-08, 1, 2.86358204e-09, 0.937287986, -1.50443711e-08, 0.348555952)
         elseif lv == 120 or lv <= 149 then
             Mob = "Chief Petty Officer [Lv. 120]"
+            NMob = "Reward:\n$6,000\n180,000 Exp."
             Quest = "MarineQuest2"
             LvQuest = 1
             S = "StartQuest"
@@ -100,6 +109,7 @@ function CQ()
             lctQuest = CFrame.new(-5035.0835, 28.6520386, 4325.29443, 0.0243340395, -7.08064647e-08, 0.999703884, -6.36926814e-08, 1, 7.23777944e-08, -0.999703884, -6.54350671e-08, 0.0243340395)
         elseif lv == 150 or lv <= 174 then
             Mob = "Sky Bandit [Lv. 150]"
+            NMob = "Reward:\n$7,000\n250,000 Exp."
             Quest = "SkyQuest"
             LvQuest = 1
             S = "StartQuest"
@@ -107,6 +117,7 @@ function CQ()
             lctQuest = CFrame.new(-4841.83447, 717.669617, -2623.96436, -0.875942111, 5.59710216e-08, -0.482416272, 3.04023082e-08, 1, 6.08195947e-08, 0.482416272, 3.86078725e-08, -0.875942111)
         elseif lv == 175 or lv <= 224 then
             Mob = "Dark Master [Lv. 175]"
+            NMob = "Reward:\n$7,500\n350,000 Exp."
             Quest = "SkyQuest"
             LvQuest = 2
             S = "StartQuest"
@@ -114,20 +125,23 @@ function CQ()
             lctQuest = CFrame.new(-4841.83447, 717.669617, -2623.96436, -0.875942111, 5.59710216e-08, -0.482416272, 3.04023082e-08, 1, 6.08195947e-08, 0.482416272, 3.86078725e-08, -0.875942111)
         elseif lv == 225 or lv <= 274 then
             Mob = "Toga Warrior [Lv. 225]"
+            NMob = "Reward:\n$7,000\n700,000 Exp."
             Quest = "ColosseumQuest"
             LvQuest = 1
             S = "StartQuest"
             posQuest = Vector3.new(-1576.11743, 7.38933945, -2983.30762, 0.576966345, 1.22114863e-09, 0.816767931, -3.58496594e-10, 1, -1.24185606e-09, -0.816767931, 4.2370063e-10, 0.576966345)
             lctQuest =  CFrame.new(-1576.11743, 7.38933945, -2983.30762, 0.576966345, 1.22114863e-09, 0.816767931, -3.58496594e-10, 1, -1.24185606e-09, -0.816767931, 4.2370063e-10, 0.576966345)
-        elseif lv == 275 or lv <= 300 then
+        elseif lv == 275 or lv <= 299 then
             Mob = "Gladiator [Lv. 275]"
+            NMob = "Reward:\n$7,500\n1,000,000 Exp."
             Quest = "ColosseumQuest"
             LvQuest = 2
             S = "StartQuest"
             posQuest = Vector3.new(-1576.11743, 7.38933945, -2983.30762, 0.576966345, 1.22114863e-09, 0.816767931, -3.58496594e-10, 1, -1.24185606e-09, -0.816767931, 4.2370063e-10, 0.576966345)
             lctQuest = CFrame.new(-1576.11743, 7.38933945, -2983.30762, 0.576966345, 1.22114863e-09, 0.816767931, -3.58496594e-10, 1, -1.24185606e-09, -0.816767931, 4.2370063e-10, 0.576966345)
-        elseif lv == 301 or lv <= 329 then
+        elseif lv == 300 or lv <= 329 then
             Mob = "Military Soldier [Lv. 300]"
+            NMob = "Reward:\n$8,250\n1,300,000 Exp."
             Quest = "MagmaQuest"
             LvQuest = 1
             S = "StartQuest"
@@ -135,6 +149,7 @@ function CQ()
             lctQuest = CFrame.new(-5316.55859, 12.2370615, 8517.2998, 0.588437557, -1.37880001e-08, -0.808542669, -2.10116209e-08, 1, -3.23446478e-08, 0.808542669, 3.60215964e-08, 0.588437557)
         elseif lv == 330 or lv <= 449 then
             Mob = "Military Spy [Lv. 330]"
+            NMob = "Reward:\n$8,500\n1,850,000 Exp."
             Quest = "MagmaQuest"
             LvQuest = 2
             S = "StartQuest"
@@ -142,6 +157,7 @@ function CQ()
             lctQuest = CFrame.new(-5316.55859, 12.2370615, 8517.2998, 0.588437557, -1.37880001e-08, -0.808542669, -2.10116209e-08, 1, -3.23446478e-08, 0.808542669, 3.60215964e-08, 0.588437557)
         elseif lv == 450 or lv <= 474 then
             Mob = "God's Guard [Lv. 450]"
+            NMob = "Reward:\n$8,750\n3,800,000 Exp."
             Quest = "SkyExp1Quest"
             LvQuest = 1
             S = "StartQuest"
@@ -149,6 +165,7 @@ function CQ()
             lctQuest = CFrame.new(-4721.71436, 845.277161, -1954.20105, -0.999277651, -5.56969759e-09, 0.0380011722, -4.14751478e-09, 1, 3.75035256e-08, -0.0380011722, 3.73188307e-08, -0.999277651)
         elseif lv == 475 or lv <= 524 then
             Mob = "Shanda [Lv. 475]"
+            NMob = "Reward:\n$9,000\n4,300,000 Exp."
             Quest = "SkyExp1Quest"
             LvQuest = 2
             S = "StartQuest"
@@ -156,6 +173,7 @@ function CQ()
             lctQuest = CFrame.new(-7863.63672, 5545.49316, -379.826324, 0.362120807, -1.98046344e-08, -0.93213129, 4.05822291e-08, 1, -5.48095125e-09, 0.93213129, -3.58431969e-08, 0.362120807)
         elseif lv == 525 or lv <= 549 then
             Mob = "Royal Squad [Lv. 525]"
+            NMob = "Reward:\n$9,500\n4,600,000 Exp."
             Quest = "SkyExp2Quest"
             LvQuest = 1
             S = "StartQuest"
@@ -163,6 +181,7 @@ function CQ()
             lctQuest = CFrame.new(-7902.66895, 5635.96387, -1411.71802, 0.0504222959, 2.5710392e-08, 0.998727977, 1.12541557e-07, 1, -3.14249675e-08, -0.998727977, 1.13982921e-07, 0.0504222959)
         elseif lv == 550 or lv <= 624 then
             Mob = "Royal Soldier [Lv. 550]"
+            NMob = "Reward:\n$9,750\n5,000,000 Exp."
             Quest = "SkyExp2Quest"
             LvQuest = 2
             S = "StartQuest"
@@ -170,6 +189,7 @@ function CQ()
             lctQuest = CFrame.new(-7902.66895, 5635.96387, -1411.71802, 0.0504222959, 2.5710392e-08, 0.998727977, 1.12541557e-07, 1, -3.14249675e-08, -0.998727977, 1.13982921e-07, 0.0504222959)
         elseif lv == 625 or lv <= 649 then
             Mob = "Galley Pirate [Lv. 625]"
+            NMob = "Reward:\n$10,000\n5,800,000 Exp."
             Quest = "FountainQuest"
             LvQuest = 1
             S = "StartQuest"
@@ -177,6 +197,7 @@ function CQ()
             lctQuest = CFrame.new(5254.60156, 38.5011406, 4049.69678, -0.0504891425, -3.62066501e-08, -0.998724639, -9.87921389e-09, 1, -3.57534553e-08, 0.998724639, 8.06145284e-09, -0.0504891425)
         elseif lv >= 650 or lv <= 2100 then
             Mob = "Galley Captain [Lv. 650]"
+            NMob = "Reward:\n$10,000\n6,300,000 Exp."
             Quest = "FountainQuest"
             LvQuest = 2
             S = "StartQuest"
@@ -187,6 +208,7 @@ function CQ()
     if world3 then
         if lv >= 2050 then
             Mob = "Posessed Mummy [Lv. 2050]"
+            NMob = "Posessed Mummys"
             Quest = "HauntedQuest2"
             LvQuest = 2
             S = "StartQuest"
@@ -213,6 +235,7 @@ end
 function MOBS()
 CQ()
 local M = game.Workspace.Enemies:GetChildren()
+local que = game.Players.LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title
 game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
     if game.Players.LocalPlayer.PlayerGui.Main.Quest.Visible == true then
                 for a, e in pairs(M) do
@@ -240,6 +263,7 @@ end
 function MOBS2()
 CQ()
 local M2 = game.ReplicatedStorage:GetChildren()
+local que = game.Players.LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title
 game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
     if game.Players.LocalPlayer.PlayerGui.Main.Quest.Visible == true then
             for ii, vv in pairs(M2) do
@@ -279,6 +303,16 @@ CQ()
         end
 end
 
+function ABDQ()
+    if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestReward.Title.Text == NMob then
+    else
+        local args = {
+                [1] = "AbandonQuest"
+        }
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+    end
+end
+
 function ATEQ()
     if game.Players.LocalPlayer.Backpack:FindFirstChild(_G.Select_Weapon) then
         local tool = game.Players.LocalPlayer.Backpack:FindFirstChild(_G.Select_Weapon)
@@ -299,7 +333,7 @@ for _, we in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
 end
 
 local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/zxciaz/VenyxUI/main/Reuploaded"))() --someone reuploaded it so I put it in place of the original back up so guy can get free credit.
-local venyx = library.new("TNW HUB | Rewrite Version 0.0.4.1", 5013109572)
+local venyx = library.new("TNW HUB | Rewrite Version 0.0.6.2", 5013109572)
 
 local themes = {
 Background = Color3.fromRGB(24, 24, 24),
@@ -319,6 +353,7 @@ section1:addToggle("Auto Farm Level", nil, function(farm)
 _G.AutoFarm = farm
     while _G.AutoFarm do wait()
         pcall(function()
+            ABDQ()
             AC()
             CQ()
             MOBS()
