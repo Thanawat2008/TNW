@@ -18,8 +18,8 @@ function AC()
     local vu = game:GetService'VirtualUser'
     local q = game.Players.LocalPlayer.PlayerGui.Main.Quest
     if q.Visible == true then
-        vu:CaptureController()
-        vu:Button1Down(Vector2.new(1280, 672))
+            vu:CaptureController()
+            vu:Button1Down(Vector2.new(1280, 672))
     end
 end
 
@@ -219,13 +219,13 @@ function CQ()
 end
 
 function TP(P1,P2)
-game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
     local Distance = (P1 - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
     if Distance < 250 then
-        Speed = 25000
+        Speed = 5000
     elseif Distance >= 250 then
         Speed = 275
     end
+    game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
     game:GetService("TweenService"):Create(
         game.Players.LocalPlayer.Character.HumanoidRootPart,
         TweenInfo.new(Distance/Speed, Enum.EasingStyle.Linear),
@@ -236,25 +236,24 @@ function MOBS()
 CQ()
 local M = game.Workspace.Enemies:GetChildren()
 local que = game.Players.LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title
-game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
     if game.Players.LocalPlayer.PlayerGui.Main.Quest.Visible == true then
                 for a, e in pairs(M) do
                     for i, v in pairs(M) do
-                        if e.Name == Mob then
-                            if v.Name == Mob then
-                                e.Humanoid.WalkSpeed = 1
-                                v.Humanoid.WalkSpeed = 1
-                                e.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
-                                sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
-                                e.HumanoidRootPart.Size = Vector3.new(50,50,50)
-                                e.HumanoidRootPart.CanCollide = false
-                                if Mode == 1 then
-                                    TP(v.HumanoidRootPart.Position, v.HumanoidRootPart.CFrame * CFrame.new(0,25,10))
-                                elseif Mode == 2 then
-                                    TP(v.HumanoidRootPart.Position, v.HumanoidRootPart.CFrame * CFrame.new(0,0,25))
+                            if e.Name == Mob then
+                                if v.Name == Mob then
+                                    e.Humanoid.WalkSpeed = 1
+                                    v.Humanoid.WalkSpeed = 1
+                                    e.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
+                                    sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
+                                    e.HumanoidRootPart.Size = Vector3.new(50,50,50)
+                                    e.HumanoidRootPart.CanCollide = false
+                                    if Mode == 1 then
+                                        TP(v.HumanoidRootPart.Position, v.HumanoidRootPart.CFrame * CFrame.new(0,25,10))
+                                    elseif Mode == 2 then
+                                        TP(v.HumanoidRootPart.Position, v.HumanoidRootPart.CFrame * CFrame.new(0,0,25))
+                                    end
                                 end
                             end
-                        end
                     end
                 end
     end
@@ -263,20 +262,15 @@ end
 function MOBS2()
 CQ()
 local M2 = game.ReplicatedStorage:GetChildren()
-local que = game.Players.LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title
-game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
-    if game.Players.LocalPlayer.PlayerGui.Main.Quest.Visible == true then
-            for ii, vv in pairs(M2) do
-                if vv.Name == Mob then
-                    vv.Humanoid.WalkSpeed = 1
-                    TP(vv.HumanoidRootPart.Position,vv.HumanoidRootPart.CFrame)
-                end
-            end
+    for l, s in pairs(M2) do
+        if s.Name == Mob then
+            TP(s.HumanoidRootPart.Position, s.HumanoidRootPart.CFrame)
+        end
     end
 end
 
-function ABS()
-game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
+spawn(function()
+while true do wait()
     if game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
     else
         local buso = {
@@ -286,10 +280,10 @@ game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
     game.ReplicatedStorage.Remotes.CommF_:InvokeServer(unpack(buso))
     end
 end
+end)
 
 function ATQ()
 CQ()
-game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
     local q = game.Players.LocalPlayer.PlayerGui.Main.Quest
         if q.Visible == false then
                 TP(posQuest, lctQuest)
@@ -305,8 +299,7 @@ game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
         end
 end
 
-function ABDQ()
-game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
+spawn(function()
         if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestReward.Title.Text == NMob then
         else
             local args = {
@@ -314,15 +307,65 @@ game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
             }
             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
         end
-end
+end)
 
 function ATEQ()
-game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
     if game.Players.LocalPlayer.Backpack:FindFirstChild(_G.Select_Weapon) then
         local tool = game.Players.LocalPlayer.Backpack:FindFirstChild(_G.Select_Weapon)
         wait(.4)
         game.Players.LocalPlayer.Character.Humanoid:EquipTool(tool)
     end
+end
+
+function Sup()
+if game.Players.LocalPlayer.Backpack:FindFirstChild("Combat") or game.Players.LocalPlayer.Character:FindFirstChild("Combat") then
+    local args = {
+        [1] = "BuyElectro"
+    }
+game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+end   
+if game.Players.LocalPlayer.Character:FindFirstChild("Superhuman") or game.Players.LocalPlayer.Backpack:FindFirstChild("Superhuman") then
+    _G.Select_Weapon = "Superhuman"
+end  
+if game.Players.LocalPlayer.Backpack:FindFirstChild("Electro") or game.Players.LocalPlayer.Character:FindFirstChild("Electro") or game.Players.LocalPlayer.Backpack:FindFirstChild("Black Leg") or game.Players.LocalPlayer.Character:FindFirstChild("Black Leg") or game.Players.LocalPlayer.Backpack:FindFirstChild("Fishman Karate") or game.Players.LocalPlayer.Character:FindFirstChild("Fishman Karate") or game.Players.LocalPlayer.Backpack:FindFirstChild("Dragon Claw") or game.Players.LocalPlayer.Character:FindFirstChild("Dragon Claw") then
+    if game.Players.LocalPlayer.Backpack:FindFirstChild("Electro") and game.Players.LocalPlayer.Backpack:FindFirstChild("Electro").Level.Value <= 299 then
+        _G.Select_Weapon = "Electro"
+    end
+end
+        if game.Players.LocalPlayer.Backpack:FindFirstChild("Black Leg") and game.Players.LocalPlayer.Backpack:FindFirstChild("Black Leg").Level.Value <= 299 then
+            _G.Select_Weapon = "Black Leg"
+        end
+            if game.Players.LocalPlayer.Backpack:FindFirstChild("Fishman Karate") and game.Players.LocalPlayer.Backpack:FindFirstChild("Fishman Karate").Level.Value <= 299 then
+                _G.Select_Weapon = "Fishman Karate"
+            end
+                if game.Players.LocalPlayer.Backpack:FindFirstChild("Dragon Claw") and game.Players.LocalPlayer.Backpack:FindFirstChild("Dragon Claw").Level.Value <= 299 then
+                    _G.Select_Weapon = "Dragon Claw"
+                end
+                    if game.Players.LocalPlayer.Backpack:FindFirstChild("Electro") and game.Players.LocalPlayer.Backpack:FindFirstChild("Electro").Level.Value >= 300 then
+                        local args = {
+                            [1] = "BuyBlackLeg"
+                        }
+                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+                    end
+                        if game.Players.LocalPlayer.Character:FindFirstChild("Black Leg") and game.Players.LocalPlayer.Character:FindFirstChild("Black Leg").Level.Value >= 300 then
+                            local args = {
+                                [1] = "BuyFishmanKarate"
+                            }
+                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+                        end
+                                if game.Players.LocalPlayer.Backpack:FindFirstChild("Fishman Karate") and game.Players.LocalPlayer.Backpack:FindFirstChild("Fishman Karate").Level.Value >= 300 then
+                                    local args = {
+                                        [1] = "BlackbeardReward",
+                                        [2] = "DragonClaw",
+                                        [3] = "1"
+                                    }
+                                end
+                                        if game.Players.LocalPlayer.Backpack:FindFirstChild("Dragon Claw") and game.Players.LocalPlayer.Backpack:FindFirstChild("Dragon Claw").Level.Value >= 300 then
+                                            local args = {
+                                                [1] = "BuySuperhuman"
+                                            }
+                                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+                                        end
 end
 
 spawn(function()
@@ -337,7 +380,7 @@ for _, we in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
 end
 
 local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/zxciaz/VenyxUI/main/Reuploaded"))() --someone reuploaded it so I put it in place of the original back up so guy can get free credit.
-local venyx = library.new("TNW HUB | Rewrite Version 0.0.6.2", 5013109572)
+local venyx = library.new("TNW HUB | Rewrite Version 0.0.7.2", 5013109572)
 
 local themes = {
 Background = Color3.fromRGB(24, 24, 24),
@@ -356,20 +399,22 @@ local section2 = page:addSection("Settings Auto Farm")
 section1:addToggle("Auto Farm Level", nil, function(farm)
 _G.AutoFarm = farm
     while _G.AutoFarm do wait()
-        if _G.AutoFarm == true then
             pcall(function()
-                game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
                 AC()
-                CQ()
                 MOBS()
                 MOBS2()
-                ABS()
                 ATQ()
-                ABDQ()
                 ATEQ()
             end)
-        end
     end
+end)
+section1:addToggle("Auto Superhuman", nil, function(sup)
+    _G.Sup = sup
+        if _G.Sup == true then
+            pcall(function()
+                Sup()
+            end)
+        end
 end)
 section2:addDropdown("Select Weapon", weapon, function(wp)
    _G.Select_Weapon = wp
