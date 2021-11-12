@@ -276,6 +276,7 @@ game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
 end
 
 function ABS()
+game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
     if game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
     else
         local buso = {
@@ -288,6 +289,7 @@ end
 
 function ATQ()
 CQ()
+game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
     local q = game.Players.LocalPlayer.PlayerGui.Main.Quest
         if q.Visible == false then
                 TP(posQuest, lctQuest)
@@ -304,16 +306,18 @@ CQ()
 end
 
 function ABDQ()
-    if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestReward.Title.Text == NMob then
-    else
-        local args = {
-                [1] = "AbandonQuest"
-        }
-        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-    end
+game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
+        if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestReward.Title.Text == NMob then
+        else
+            local args = {
+                    [1] = "AbandonQuest"
+            }
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+        end
 end
 
 function ATEQ()
+game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
     if game.Players.LocalPlayer.Backpack:FindFirstChild(_G.Select_Weapon) then
         local tool = game.Players.LocalPlayer.Backpack:FindFirstChild(_G.Select_Weapon)
         wait(.4)
@@ -353,13 +357,13 @@ section1:addToggle("Auto Farm Level", nil, function(farm)
 _G.AutoFarm = farm
     while _G.AutoFarm do wait()
         pcall(function()
-            ABDQ()
             AC()
             CQ()
             MOBS()
             MOBS2()
             ABS()
             ATQ()
+            ABDQ()
             ATEQ()
         end)
     end
