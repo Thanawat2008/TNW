@@ -494,3 +494,5 @@ local section1page7 = page7:addSection("Settings UI")
 section1page7:addKeybind("Toggle Keybind", Enum.KeyCode.RightControl, function()
     venyx:toggle()
 end)
+
+venyx:SelectPage(venyx.pages[1], true)
