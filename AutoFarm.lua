@@ -349,6 +349,7 @@ CQ()
 end
 
 spawn(function()
+    while _G.AutoFarm do
         if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestReward.Title.Text == NMob then
         else
             local args = {
@@ -356,6 +357,7 @@ spawn(function()
             }
             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
         end
+    end
 end)
 
 function ATEQ()
