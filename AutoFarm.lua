@@ -494,7 +494,7 @@ section1:addToggle("Auto Superhuman", nil, function(sup)
             end
         end
 end)
-section2:addToggle("Fast Attack ( Recommended to use with Mode 2 )", nil, function(fat)
+section2:addToggle("Fast Attack", nil, function(fat)
     _G.FastAttk = fat
 end)
 section2:addDropdown("Select Weapon", weapon, function(wp)
