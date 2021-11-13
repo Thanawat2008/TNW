@@ -460,7 +460,7 @@ for _, we in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
 end
 
 local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/zxciaz/VenyxUI/main/Reuploaded"))() --someone reuploaded it so I put it in place of the original back up so guy can get free credit.
-local venyx = library.new("TNW HUB | Rewrite Version 0.1.1.2", 5013109572)
+local venyx = library.new("TNW HUB | Rewrite Version 0.1.1.3", 5013109572)
 
 local themes = {
 Background = Color3.fromRGB(24, 24, 24),
