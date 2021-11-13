@@ -294,13 +294,15 @@ local que = game.Players.LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.T
                                     e.HumanoidRootPart.Size = Vector3.new(100,100,100)
                                     e.HumanoidRootPart.CanCollide = false
                                     if Mode == 1 then
-                                        TP(v.HumanoidRootPart.Position, v.HumanoidRootPart.CFrame * CFrame.new(0,45,0))
+                                        TP(v.HumanoidRootPart.Position, v.HumanoidRootPart.CFrame * CFrame.new(0,40,0))
                                     elseif Mode == 2 then
+                                        TP(v.HumanoidRootPart.Position, v.HumanoidRootPart.CFrame * CFrame.new(0,0,-20))
+                                    elseif Mode == 3 then
                                         TP(v.HumanoidRootPart.Position, v.HumanoidRootPart.CFrame * CFrame.new(0,0,20))
                                     end
-                                        if v.Humanoid.Health == 0 then
-                                            TP(PosMon, CFrameMon)
-                                        end
+                                            if v.Humanoid.Health == 0 then
+                                                TP(PosMon, CFrameMon)
+                                            end
                                 end
                             end
                     end
@@ -458,7 +460,7 @@ for _, we in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
 end
 
 local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/zxciaz/VenyxUI/main/Reuploaded"))() --someone reuploaded it so I put it in place of the original back up so guy can get free credit.
-local venyx = library.new("TNW HUB | Rewrite Version 0.1.0.2", 5013109572)
+local venyx = library.new("TNW HUB | Rewrite Version 0.1.1.2", 5013109572)
 
 local themes = {
 Background = Color3.fromRGB(24, 24, 24),
@@ -508,7 +510,7 @@ section2:addButton("Refresh", function()
             table.insert(weapon, we.Name)
         end
 end)
-section2:addSlider("Modes ( Choose before Auto Farm )", 0, 1, 2, function(mode)
+section2:addSlider("Modes ( Choose before Auto Farm )", 0, 1, 3, function(mode)
     Mode = mode
 end)
 
