@@ -487,9 +487,11 @@ end)
 section1:addToggle("Auto Superhuman", nil, function(sup)
     _G.Sup = sup
         if _G.Sup == true then
-            pcall(function()
-                Sup()
-            end)
+            while _G.Sup do wait()
+                pcall(function()
+                    Sup()
+                end)
+            end
         end
 end)
 section2:addToggle("Fast Attack ( Recommended to use with Mode 2 )", nil, function(fat)
