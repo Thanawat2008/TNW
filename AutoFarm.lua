@@ -351,13 +351,13 @@ CQ()
 end
 
 spawn(function()
-    while _G.AutoFarm do
-        if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestReward.Title.Text == NMob then
-        else
-            local args = {
-                    [1] = "AbandonQuest"
+CQ()
+    while true do wait()
+        if game.Players.LocalPlayer.PlayerGui.Main.Quest.Container.QuestReward.Title.Text ~= NMob then
+            local ab = {
+                [1] = "AbandonQuest"
             }
-            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+            game.ReplicatedStorage.Remotes.CommF_:InvokeServer(unpack(ab))
         end
     end
 end)
