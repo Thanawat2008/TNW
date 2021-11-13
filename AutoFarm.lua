@@ -264,8 +264,8 @@ function CQ()
     end
 end
 
-function TP(P1,P2)
-    local Distance = (P1 - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
+function Tween(a,b)
+    local Distance = (a - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
     if Distance < 250 then
         Speed = 5000
     elseif Distance >= 250 then
@@ -275,7 +275,7 @@ function TP(P1,P2)
     game:GetService("TweenService"):Create(
         game.Players.LocalPlayer.Character.HumanoidRootPart,
         TweenInfo.new(Distance/Speed, Enum.EasingStyle.Linear),
-        {CFrame = P2}):Play()
+        {CFrame = b}):Play()
 end
 
 function MOBS()
@@ -301,7 +301,7 @@ local que = game.Players.LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.T
                                         TP(v.HumanoidRootPart.Position, v.HumanoidRootPart.CFrame * CFrame.new(0,0,20))
                                     end
                                             if v.Humanoid.Health == 0 then
-                                                TP(PosMon, CFrameMon)
+                                                Tween(PosMon, CFrameMon)
                                             end
                                 end
                             end
@@ -315,7 +315,7 @@ CQ()
 local M2 = game.ReplicatedStorage:GetChildren()
     for l, s in pairs(M2) do
         if s.Name == Mob then
-            TP(s.HumanoidRootPart.Position, s.HumanoidRootPart.CFrame)
+            Tween(s.HumanoidRootPart.Position, s.HumanoidRootPart.CFrame)
         end
     end
 end
@@ -337,7 +337,7 @@ function ATQ()
 CQ()
     local q = game.Players.LocalPlayer.PlayerGui.Main.Quest
         if q.Visible == false then
-                TP(posQuest, lctQuest)
+                Tween(posQuest, lctQuest)
                     if game.Players.LocalPlayer.Character.HumanoidRootPart.Position == posQuest then
                         wait(0.5)
                             local qu = {
