@@ -267,11 +267,10 @@ end
 function Tween(a,b)
     local Distance = (a - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
     if Distance < 250 then
-        Speed = 5000
+        Speed = 50000
     elseif Distance >= 250 then
-        Speed = 275
+        Speed = 250
     end
-    game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
     game:GetService("TweenService"):Create(
         game.Players.LocalPlayer.Character.HumanoidRootPart,
         TweenInfo.new(Distance/Speed, Enum.EasingStyle.Linear),
@@ -281,6 +280,7 @@ end
 function MOBS()
 CQ()
 local M = game.Workspace.Enemies:GetChildren()
+local q = game.Players.LocalPlayer.PlayerGui.Main.Quest
 local que = game.Players.LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title
     if game.Players.LocalPlayer.PlayerGui.Main.Quest.Visible == true then
                 for a, e in pairs(M) do
@@ -294,15 +294,17 @@ local que = game.Players.LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.T
                                     e.HumanoidRootPart.Size = Vector3.new(100,100,100)
                                     e.HumanoidRootPart.CanCollide = false
                                     if Mode == 1 then
-                                        TP(v.HumanoidRootPart.Position, v.HumanoidRootPart.CFrame * CFrame.new(0,40,0))
+                                        Tween(v.HumanoidRootPart.Position, v.HumanoidRootPart.CFrame * CFrame.new(0,50,0))
                                     elseif Mode == 2 then
-                                        TP(v.HumanoidRootPart.Position, v.HumanoidRootPart.CFrame * CFrame.new(0,0,-20))
+                                        Tween(v.HumanoidRootPart.Position, v.HumanoidRootPart.CFrame * CFrame.new(0,0,-20))
                                     elseif Mode == 3 then
-                                        TP(v.HumanoidRootPart.Position, v.HumanoidRootPart.CFrame * CFrame.new(0,0,20))
+                                        Tween(v.HumanoidRootPart.Position, v.HumanoidRootPart.CFrame * CFrame.new(0,0,20))
+                                    elseif Mode == nil then
+                                        Mode = 1
                                     end
-                                            if v.Humanoid.Health == 0 then
-                                                Tween(PosMon, CFrameMon)
-                                            end
+                                        if v.Humanoid.Health == 0 and q.Visible == true then
+                                            Tween(PosMon, CFrameMon)
+                                        end
                                 end
                             end
                     end
@@ -320,8 +322,7 @@ local M2 = game.ReplicatedStorage:GetChildren()
     end
 end
 
-spawn(function()
-while true do wait()
+function Buso()
     if game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
     else
         local buso = {
@@ -331,7 +332,6 @@ while true do wait()
     game.ReplicatedStorage.Remotes.CommF_:InvokeServer(unpack(buso))
     end
 end
-end)
 
 function ATQ()
 CQ()
@@ -339,7 +339,7 @@ CQ()
         if q.Visible == false then
                 Tween(posQuest, lctQuest)
                     if game.Players.LocalPlayer.Character.HumanoidRootPart.Position == posQuest then
-                        wait(0.5)
+                        wait(1.1)
                             local qu = {
                                 [1] = S,
                                 [2] = Quest,
@@ -350,17 +350,16 @@ CQ()
         end
 end
 
-spawn(function()
+function Aban()
 CQ()
-    while true do wait()
-        if game.Players.LocalPlayer.PlayerGui.Main.Quest.Container.QuestReward.Title.Text ~= NMob then
+        if game.Players.LocalPlayer.PlayerGui.Main.Quest.Container.QuestReward.Title.Text == NMob then
+        else
             local ab = {
                 [1] = "AbandonQuest"
             }
             game.ReplicatedStorage.Remotes.CommF_:InvokeServer(unpack(ab))
         end
-    end
-end)
+end
 
 function ATEQ()
     if game.Players.LocalPlayer.Backpack:FindFirstChild(_G.Select_Weapon) then
@@ -460,7 +459,7 @@ for _, we in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
 end
 
 local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/zxciaz/VenyxUI/main/Reuploaded"))() --someone reuploaded it so I put it in place of the original back up so guy can get free credit.
-local venyx = library.new("TNW HUB | Rewrite Version 0.1.1.3", 5013109572)
+local venyx = library.new("TNW HUB", 5013109572)
 
 local themes = {
 Background = Color3.fromRGB(24, 24, 24),
@@ -478,14 +477,27 @@ local section1 = page:addSection("Main")
 local section2 = page:addSection("Settings Auto Farm")
 section1:addToggle("Auto Farm Level", nil, function(farm)
 _G.AutoFarm = farm
+local God = Instance.new("Part")
+God.Parent = Workspace
+God.Name = "God"
+God.CanCollide = true
+God.Anchored = true
+God.Transparency = 0.75
+God.Size = Vector3.new(15,.3,15)
     while _G.AutoFarm do wait()
-            pcall(function()
+        pcall(function()
+            God.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,-4,0)
+                Buso()
+                ATEQ()
                 AC()
                 MOBS()
                 MOBS2()
                 ATQ()
-                ATEQ()
-            end)
+                Aban()
+                if _G.AutoFarm == false then
+                    God:Destroy()
+                end
+        end)
     end
 end)
 section1:addToggle("Auto Superhuman", nil, function(sup)
@@ -498,7 +510,7 @@ section1:addToggle("Auto Superhuman", nil, function(sup)
             end
         end
 end)
-section2:addToggle("Fast Attack", nil, function(fat)
+section2:addToggle("Fast Attack [ Test ]", nil, function(fat)
     _G.FastAttk = fat
 end)
 section2:addDropdown("Select Weapon", weapon, function(wp)
@@ -510,7 +522,7 @@ section2:addButton("Refresh", function()
             table.insert(weapon, we.Name)
         end
 end)
-section2:addSlider("Modes ( Choose before Auto Farm )", 0, 1, 3, function(mode)
+section2:addSlider("Modes", 0, 1, 3, function(mode)
     Mode = mode
 end)
 
